@@ -68,8 +68,8 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
 
+map <C-w> :set wrap! linebreak nolist<cr>
 
 """"""""""""""""""""""""""""""
 " > Status line
@@ -117,4 +117,34 @@ set nu
 "make < > shifts and keep selection afterward
 vnoremap < <gv
 vnoremap > >gv
+"avoid scanning includes for autocompletion - slows it down
+set complete-=i
+"avoid delay after esc to return to normal mode
+"set timeoutlen=10 ttimeoutlen=0
+
+
+"""""""""""""""""""""""""""""""
+" > CUSTOM CTRLP
+"""""""""""""""""""""""""""""""
+
+let g:ctrlp_user_command = 'find %s -name "*.js" -o -name "*.pm" -o -name "*.pl" -o -name "*.config" -type f'
+
+"""""""""""""""""""""""""""""""
+" > CUSTOM DIFF COLORSCHEME
+"""""""""""""""""""""""""""""""
+
+highlight DiffAdd    cterm=bold ctermfg=15 ctermbg=27 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=15 ctermbg=27 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=15 ctermbg=27 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=15 ctermbg=88 gui=none guifg=bg guibg=Red
+
+"""""""""""""""""""""""""""""""
+" > CUSTOM F# TOGGLES
+"""""""""""""""""""""""""""""""
+" map <C-w> :set wrap! linebreak nolist<cr>
+" line numbers
+map <C-l> :set nu!<cr>
+" highlights
+map <C-f> :set hlsearch!<cr>
+
 

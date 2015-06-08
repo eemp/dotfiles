@@ -1,0 +1,24 @@
+[user]
+    name = Mihir Patel
+    email = mihir@rubensteintech.com
+[alias]
+    customignore = !git update-index --assume-unchanged 
+    undoignore = !git update-index --no-assume-unchanged 
+    lcustomignores = !git ls-files -v | grep "^[[:lower:]]"
+    co = checkout
+    st = "!f() { \
+        echo; echo "------- $(pwd) -------"; echo; \
+        git status; \
+        echo; echo "------- $(pwd) -------"; echo; \
+    }; f"
+    df = diff
+    dfs = !git diff --staged
+    p = !git pull --rebase
+    pf = !git pull --ff-only
+    pwc = !git stash && git pull --rebase && git stash pop
+    sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+    sapply = "!f() { git stash apply stash^{/$*}; }; f"
+[color]
+    ui = true
+[core]
+    pager = less -r
