@@ -1,10 +1,10 @@
 [user]
     name = Mihir Patel
-    email = mihir@rubensteintech.com
+    email = ee.mihir.patel@gmail.com
 [alias]
-    customignore = !git update-index --assume-unchanged 
-    undoignore = !git update-index --no-assume-unchanged 
-    lcustomignores = !git ls-files -v | grep "^[[:lower:]]"
+    assume-unchanged = !git update-index --assume-unchanged 
+    undo-unchanged-assumption = !git update-index --no-assume-unchanged 
+    unchanged-assumptions = !git ls-files -v | grep "^[[:lower:]]"
     co = checkout
     st = "!f() { \
         echo; echo "------- $(pwd) -------"; echo; \
