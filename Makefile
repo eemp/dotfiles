@@ -4,5 +4,6 @@ vim-plugins:
 	cd ~/.vim/bundle; git clone https://github.com/ervandew/supertab.git
 	cd ~/.vim/bundle; git clone git://github.com/tpope/vim-fugitive.git
 	cd ~/.vim/bundle; git clone https://github.com/kien/ctrlp.vim.git ctrlp
+	cd ~/.vim/bundle; git clone git://github.com/thirtythreeforty/lessspace.vim
 
 FORCE:
