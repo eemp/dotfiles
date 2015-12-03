@@ -4,6 +4,9 @@
 " Behave like Vim instead of Vi
 set nocompatible
 
+" 
+set nomodeline
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -15,6 +18,9 @@ set ffs=unix,dos,mac
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
+" comma is more convenient for leader
+let mapleader=","
 
 """""""""""""""""""""
 " > VISUAL
