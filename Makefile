@@ -6,5 +6,6 @@ vim-plugins: FORCE
 	cd ~/.vim/bundle; git clone https://github.com/kien/ctrlp.vim.git ctrlp
 	cd ~/.vim/bundle; git clone https://github.com/scrooloose/nerdtree.git
 	cd ~/.vim/bundle; git clone https://github.com/bling/vim-bufferline
+	cd ~/.vim/bundle; git clone https://github.com/scrooloose/nerdcommenter.git
 
 FORCE:
