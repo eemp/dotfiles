@@ -93,7 +93,9 @@ set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 set ttyfast
 
 " Enable mouse use in all modes
-set mouse=a
+if has('mouse')
+    set mouse=a
+endif
 
 " Set this to the name of your terminal that supports mouse codes.
 " Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
@@ -202,4 +204,19 @@ command! -nargs=1 Bs :call BufSel("<args>")
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
 endif
+
+"""""""""""""""""""""""""""""""""
+" > Better split nav
+"""""""""""""""""""""""""""""""""
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"""""""""""""""""""""""""""""""""
+" > vimdiff
+"""""""""""""""""""""""""""""""""
+
+" ignore case
+set diffopt+=icase 
 
