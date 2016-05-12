@@ -68,9 +68,17 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak on 80 characters
 set lbr
-set tw=500
+au BufRead,BufNewFile notes,*.md,*.js,*.comp,*.pm,*.pl,*.config,*.conf,*.c,*.cpp,*.py,*.java setlocal textwidth=80
+" enforce
+au BufNewFile,BufRead notes set filetype=mynotes
+au FileType mynotes,markdown,javascript,perl,c,cpp,python,java setlocal formatoptions+=t formatoptions-=l
+" highlight long lines
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+  autocmd BufEnter * match OverLength /\%80v.*/
+augroup END
 
 set ai "Auto indent
 set si "Smart indent
