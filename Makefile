@@ -21,5 +21,6 @@ vim-plugins: FORCE
 	cd ~/.vim/bundle && git clone https://github.com/scrooloose/nerdtree.git
 	cd ~/.vim/bundle && git clone https://github.com/ervandew/supertab.git
 	cd ~/.vim/bundle && git clone https://github.com/bling/vim-bufferline
+	cd ~/.vim/bindle && git clone https://github.com/diepm/vim-rest-console.git
 
 FORCE:
