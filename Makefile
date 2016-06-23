@@ -1,12 +1,15 @@
-all: vim tmux
+all: git tmux vim zsh
+
+git: FORCE
+	cp git/.gitconfig ~/
 
 tmux: FORCE
-	cp .tmux.conf ~/
+	cp tmux/.tmux.conf ~/
 
 vim: vimrc vim-plugins
 
 vimrc: FORCE
-	cp .vimrc ~/
+	cp vim/.vimrc ~/
 
 vim-plugins: FORCE
 	rm -rf ~/.vim/bundle
@@ -22,5 +25,8 @@ vim-plugins: FORCE
 	cd ~/.vim/bundle && git clone https://github.com/ervandew/supertab.git
 	cd ~/.vim/bundle && git clone https://github.com/bling/vim-bufferline
 	cd ~/.vim/bindle && git clone https://github.com/diepm/vim-rest-console.git
+
+zsh: FORCE
+	cp ~/zsh/.zshrc ~/
 
 FORCE:
