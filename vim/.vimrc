@@ -1,9 +1,40 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'bling/vim-bufferline'
+Plugin 'diepm/vim-rest-console'
+"Plugin 'google/vim-colorscheme-primary'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Shutnik/jshint2.vim'
+Plugin 'NLKNguyen/papercolor-theme'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 """"""""""""""""""
 " > GENERAL
 """"""""""""""""""
-" Behave like Vim instead of Vi
-set nocompatible
-
 " 
 set nomodeline
 
@@ -26,10 +57,12 @@ let mapleader=","
 " > VISUAL
 """""""""""""""""""""
 " Enable syntax highlighting
-syntax enable
-
-colorscheme desert
+"syntax enable
+set t_Co=256
 set background=dark
+colorscheme PaperColor
+
+highlight LineNr ctermfg=grey
 
 """"""""""""""""""""""""
 " > SEARCHING
@@ -69,16 +102,20 @@ set shiftwidth=4
 set tabstop=4
 
 " Linebreak on 80 characters
-set lbr
-au BufRead,BufNewFile notes,*.md,*.js,*.comp,*.pm,*.pl,*.config,*.conf,*.c,*.cpp,*.py,*.java setlocal textwidth=80
+"set lbr
+"au BufRead,BufNewFile notes,*.md,*.js,*.comp,*.pm,*.pl,*.config,*.conf,*.c,*.cpp,*.py,*.java setlocal textwidth=80
 " enforce
-au BufNewFile,BufRead notes set filetype=mynotes
-au FileType mynotes,markdown,javascript,perl,c,cpp,python,java setlocal formatoptions+=t formatoptions-=l
+"au BufNewFile,BufRead notes set filetype=mynotes
+"au FileType mynotes,markdown,javascript,perl,c,cpp,python,java setlocal formatoptions+=t formatoptions-=l
 " highlight long lines
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-  autocmd BufEnter * match OverLength /\%80v.*/
-augroup END
+"augroup vimrc_autocmds
+  "autocmd BufEnter * highlight OverLength ctermfg='160'
+  "autocmd BufEnter * match OverLength /\%80v.*/
+"augroup END
+
+" mark 80th character on a line
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%80v', 100)
 
 set ai "Auto indent
 set si "Smart indent
@@ -110,13 +147,6 @@ endif
 if !has('nvim')
   set ttymouse=xterm2
 endif
-
-"""""""""""""""""""""""""""""""
-" > PATHOGEN
-"""""""""""""""""""""""""""""""
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
 
 """""""""""""""""""""""""""""""
 " > Cursor lost weight!
@@ -161,11 +191,9 @@ highlight DiffText   cterm=bold ctermfg=15 ctermbg=88 gui=none guifg=bg guibg=Re
 """""""""""""""""""""""""""""""
 " map <C-w> :set wrap! linebreak nolist<cr>
 " line numbers
-map <C-l> :set nu!<cr>
+map <C-n> :set nu!<cr>
 " highlights
 map <C-f> :set hlsearch!<cr>
-
-:filetype plugin on
 
 if &diff
     " diff mode
@@ -206,6 +234,9 @@ endfunction
 "Bind the BufSel() function to a user-command
 command! -nargs=1 Bs :call BufSel("<args>")
 
+"No prompt for unsaved changes while switching buffers
+set hidden
+
 """""""""""""""""""""""""""""""""
 " > TERMINAL EMULATOR
 """""""""""""""""""""""""""""""""
@@ -226,5 +257,11 @@ nnoremap <C-H> <C-W><C-H>
 """""""""""""""""""""""""""""""""
 
 " ignore case
-set diffopt+=icase 
+"set diffopt+=icase 
+
+""""""""""""""""""""""""""""""""
+" > Better path completion
+""""""""""""""""""""""""""""""""
+set wildmode=longest,list,full
+set wildmenu
 
