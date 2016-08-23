@@ -16,5 +16,5 @@ chsh -s zsh
 
 * git-prompt.sh taken from the
 [git repo](https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh)
-
+[up](https://raw.githubusercontent.com/shannonmoeller/up/master/up.sh)
 
