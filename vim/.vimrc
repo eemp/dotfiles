@@ -175,7 +175,8 @@ set complete-=i
 " > CUSTOM CTRLP
 """""""""""""""""""""""""""""""
 
-let g:ctrlp_user_command = 'find %s -name "*.js" -o -name "*.pm" -o -name "*.pl" -o -name "*.config" -type f'
+"let g:ctrlp_user_command = 'find %s -name "*.js" -o -name "*.pm" -o -name "*.pl" -o -name "*.config" -type f'
+let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat ~/.ctrlpignore`"'
 
 """""""""""""""""""""""""""""""
 " > CUSTOM DIFF COLORSCHEME
@@ -252,16 +253,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"""""""""""""""""""""""""""""""""
-" > vimdiff
-"""""""""""""""""""""""""""""""""
-
-" ignore case
-"set diffopt+=icase 
-
 """"""""""""""""""""""""""""""""
 " > Better path completion
 """"""""""""""""""""""""""""""""
 set wildmode=longest,list,full
 set wildmenu
+
+" set vim to chdir for each file
+cabbr <expr> %% expand('%:p:h')
 
