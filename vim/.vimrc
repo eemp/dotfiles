@@ -50,6 +50,10 @@ set ffs=unix,dos,mac
 " Show matching brackets when text indicator is over them
 set showmatch
 
+" line numbers
+set nu
+map <C-n> :set nu!<cr>
+
 " comma is more convenient for leader
 let mapleader=","
 
@@ -101,26 +105,12 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 80 characters
-"set lbr
-"au BufRead,BufNewFile notes,*.md,*.js,*.comp,*.pm,*.pl,*.config,*.conf,*.c,*.cpp,*.py,*.java setlocal textwidth=80
-" enforce
-"au BufNewFile,BufRead notes set filetype=mynotes
-"au FileType mynotes,markdown,javascript,perl,c,cpp,python,java setlocal formatoptions+=t formatoptions-=l
-" highlight long lines
-"augroup vimrc_autocmds
-  "autocmd BufEnter * highlight OverLength ctermfg='160'
-  "autocmd BufEnter * match OverLength /\%80v.*/
-"augroup END
-
-" mark 80th character on a line
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%80v', 100)
-
 set ai "Auto indent
 set si "Smart indent
 
-map <C-w> :set wrap! linebreak nolist<cr>
+"make < > shifts and keep selection afterward
+vnoremap < <gv
+vnoremap > >gv
 
 """"""""""""""""""""""""""""""
 " > Status line
@@ -157,19 +147,6 @@ if has("autocmd")
     au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
 endif
 
-"""""""""""""""""""""""""""""""
-" > Miscellaneous
-"""""""""""""""""""""""""""""""
-" line numbers
-set nu
-"make < > shifts and keep selection afterward
-vnoremap < <gv
-vnoremap > >gv
-"avoid scanning includes for autocompletion - slows it down
-set complete-=i
-"avoid delay after esc to return to normal mode
-"set timeoutlen=10 ttimeoutlen=0
-
 
 """""""""""""""""""""""""""""""
 " > CUSTOM CTRLP
@@ -186,20 +163,6 @@ highlight DiffAdd    cterm=bold ctermfg=15 ctermbg=27 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=15 ctermbg=27 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=15 ctermbg=27 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=15 ctermbg=88 gui=none guifg=bg guibg=Red
-
-"""""""""""""""""""""""""""""""
-" > CUSTOM F# TOGGLES
-"""""""""""""""""""""""""""""""
-" map <C-w> :set wrap! linebreak nolist<cr>
-" line numbers
-map <C-n> :set nu!<cr>
-" highlights
-map <C-f> :set hlsearch!<cr>
-
-if &diff
-    " diff mode
-    set diffopt+=iwhite
-endif
 
 """"""""""""""""""""""""""""""
 " > BUFFERS
@@ -261,4 +224,18 @@ set wildmenu
 
 " set vim to chdir for each file
 cabbr <expr> %% expand('%:p:h')
+
+"""""""""""""""""""""""""""""""
+" > Miscellaneous
+"""""""""""""""""""""""""""""""
+"avoid scanning includes for autocompletion - slows it down
+set complete-=i
+
+"avoid delay after esc to return to normal mode
+"set timeoutlen=10 ttimeoutlen=0
+
+" mark 80th character on a line
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%80v', 100)
+
 
