@@ -1,15 +1,17 @@
 all: git tmux vim zsh
 
 git: FORCE
-	cp git/.gitconfig ~/
+	ln -s $PWD/git/.gitconfig ~/
 
 tmux: FORCE
-	cp tmux/.tmux.conf ~/
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	ln -s $PWD/tmux/.tmux.conf ~/
+	~/.tmux/plugins/tpm/bin/install_plugins
 
 vim: vimrc vim-plugins
 
 vimrc: FORCE
-	cp vim/.vimrc ~/
+	ln -s $PWD/vim/.vimrc ~/
 
 vim-plugins: FORCE
 	rm -rf ~/.vim/bundle
@@ -18,6 +20,6 @@ vim-plugins: FORCE
 	vim +PluginInstall +qall
 
 zsh: FORCE
-	cp ~/zsh/.zshrc ~/
+	ln -s $PWD/zsh/.zshrc ~/
 
 FORCE:
