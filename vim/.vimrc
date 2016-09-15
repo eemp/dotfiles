@@ -20,7 +20,8 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-flagship'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
@@ -28,8 +29,12 @@ Plugin 'bling/vim-bufferline'
 Plugin 'diepm/vim-rest-console'
 "Plugin 'google/vim-colorscheme-primary'
 Plugin 'pangloss/vim-javascript'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'Shutnik/jshint2.vim'
 Plugin 'NLKNguyen/papercolor-theme'
+
+"let's keep vim simple
+"Plugin 'Raimondi/delimitMate'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -240,4 +245,12 @@ set complete-=i
 " mark 80th character on a line
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%80v', 100)
+
+""""""""""""""""""""""""""""""
+" > vim-flagship
+""""""""""""""""""""""""""""""
+set laststatus=2
+set showtabline=2
+set guioptions-=e
+
 
