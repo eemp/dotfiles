@@ -124,6 +124,10 @@ set si "Smart indent
 vnoremap < <gv
 vnoremap > >gv
 
+" Show trailing and preceding spaces
+set list
+set listchars=tab:>-,trail:~,extends:>,precedes:<
+
 """"""""""""""""""""""""""""""
 " > Status line
 """"""""""""""""""""""""""""""
