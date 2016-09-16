@@ -28,6 +28,7 @@ Plugin 'ervandew/supertab'
 Plugin 'bling/vim-bufferline'
 Plugin 'diepm/vim-rest-console'
 Plugin 'pangloss/vim-javascript'
+Plugin 'elzr/vim-json'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'scrooloose/syntastic'
@@ -38,6 +39,10 @@ Plugin 'scrooloose/syntastic'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+au BufRead,BufNewFile *.ipy set filetype=python
+au BufRead,BufNewFile *.json set filetype=json
+
 
 """"""""""""""""""
 " > GENERAL
@@ -252,6 +257,7 @@ set guioptions-=e
 
 " syntastic
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_json_checkers = ['jsonlint']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
