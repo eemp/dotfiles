@@ -27,11 +27,10 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'bling/vim-bufferline'
 Plugin 'diepm/vim-rest-console'
-"Plugin 'google/vim-colorscheme-primary'
 Plugin 'pangloss/vim-javascript'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'Shutnik/jshint2.vim'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'scrooloose/syntastic'
 
 "let's keep vim simple
 "Plugin 'Raimondi/delimitMate'
@@ -246,11 +245,23 @@ set complete-=i
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%80v', 100)
 
-""""""""""""""""""""""""""""""
-" > vim-flagship
-""""""""""""""""""""""""""""""
+" flagship
 set laststatus=2
 set showtabline=2
 set guioptions-=e
 
+" syntastic
+let g:syntastic_javascript_checkers = ['eslint']
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '!'
 

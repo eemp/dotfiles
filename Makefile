@@ -15,8 +15,10 @@ vim: vimrc vim-plugins
 vimrc: FORCE
 	rm -f ~/.vimrc
 	rm -f ~/.ctrlpignore
+	rm -f ~/.eslintrc
 	ln -s ${PWD}/vim/.vimrc ~/
 	ln -s ${PWD}/vim/.ctrlpignore ~/
+	ln -s ${PWD}/vim/.eslintrc ~/
 
 vim-plugins: FORCE
 	rm -rf ~/.vim/bundle
