@@ -1,6 +1,16 @@
 # dotfiles
 
-> my dotfiles
+Basics:
+
+* tmux
+* zsh
+* $EDITOR=(n)vim
+
+Extras:
+
+* z
+* fzf
+
 
 ## Installation
 
