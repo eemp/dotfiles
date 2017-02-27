@@ -2,23 +2,38 @@
     name = Mihir Patel
     email = ee.mihir.patel@gmail.com
 [alias]
-    assume-unchanged = !git update-index --assume-unchanged 
-    undo-unchanged-assumption = !git update-index --no-assume-unchanged 
-    unchanged-assumptions = !git ls-files -v | grep "^[[:lower:]]"
+    addi = add -i
+    assume-unchanged = !git update-index --assume-unchanged
     co = checkout
+    df = diff -w --color-words
+    dfs = diff --staged -w --color-words
+    glog = log --date=iso --pretty=format:\"%C(yellow)%h %C(bold blue)%ad %Creset%an %Cgreen%s\" --graph
+    pullf = pull --ff-only
+    pullr = pull --rebase
+    pwc = !git stash && git pull --rebase && git stash pop
+    sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+    sapply = "!f() { git stash apply stash^{/$*}; }; f"
     st = "!f() { \
         echo; echo "------- $(pwd) -------"; echo; \
         git status; \
         echo; echo "------- $(pwd) -------"; echo; \
     }; f"
-    df = diff
-    dfs = !git diff --staged
     p = !git pull --rebase
     pf = !git pull --ff-only
     pwc = !git stash && git pull --rebase && git stash pop
     sshow = "!f() { git stash show stash^{/$*} -p; }; f"
     sapply = "!f() { git stash apply stash^{/$*}; }; f"
+    undo-unchanged-assumption = !git update-index --no-assume-unchanged
+    unchanged-assumptions = !git ls-files -v | grep "^[[:lower:]]"
 [color]
     ui = true
+[color "diff"]
+    whitespace = yellow
 [core]
     pager = less -r
+    editor = vim
+[merge]
+    conflictstyle = diff3
+[push]
+    default = current
+
