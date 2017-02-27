@@ -1,3 +1,5 @@
+source /etc/vimrc
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -16,22 +18,33 @@ let g:PaperColor_Dark_Override = { 'comment' : '#5f875f' }
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bling/vim-bufferline'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'elzr/vim-json'
+Plugin 'ervandew/supertab'
+Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-flagship'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-flagship'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ervandew/supertab'
-Plugin 'bling/vim-bufferline'
-Plugin 'diepm/vim-rest-console'
+
 Plugin 'pangloss/vim-javascript'
-Plugin 'elzr/vim-json'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'scrooloose/syntastic'
+Plugin 'mxw/vim-jsx'
+"Plugin 'Valloric/MatchTagAlways'
+
+let g:vim_markdown_folding_disabled = 1
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+let g:vrc_trigger = '<C-n>'
+let g:vrc_show_command = 1
+let g:vrc_connect_timeout = 5
+Plugin 'diepm/vim-rest-console'
 
 "let's keep vim simple
 "Plugin 'Raimondi/delimitMate'
@@ -42,12 +55,13 @@ filetype plugin indent on    " required
 
 au BufRead,BufNewFile *.ipy set filetype=python
 au BufRead,BufNewFile *.json set filetype=json
+au BufRead,BufNewFile *.rest set filetype=rest
 
 
 """"""""""""""""""
 " > GENERAL
 """"""""""""""""""
-" 
+"
 set nomodeline
 
 " Set to auto read when a file is changed from the outside
@@ -82,11 +96,11 @@ highlight LineNr ctermfg=grey
 
 """"""""""""""""""""""""
 " > SEARCHING
-"""""""""""""""""""""""" 
+""""""""""""""""""""""""
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -153,16 +167,6 @@ endif
 if !has('nvim')
   set ttymouse=xterm2
 endif
-
-"""""""""""""""""""""""""""""""
-" > Cursor lost weight!
-"""""""""""""""""""""""""""""""
-if has("autocmd")
-    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-endif
-
 
 """""""""""""""""""""""""""""""
 " > CUSTOM CTRLP
@@ -260,18 +264,26 @@ set showtabline=2
 set guioptions-=e
 
 " syntastic
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_json_checkers = ['jsonlint']
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_json_checkers = ['jsonlint']
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
 
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
+"let g:syntastic_error_symbol = '✗'
+"let g:syntastic_warning_symbol = '!'
 
+
+" vim-jsx
+let g:jsx_ext_required = 0
+
+" remove trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
+
+"set ttimeoutlen=10
