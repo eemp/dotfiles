@@ -27,7 +27,7 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+#ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -49,8 +49,8 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases git history-substring-search node npm nvm
-    ssh-agent tmux urltools vi-mode z zsh-navigation-tools zsh_reload)
+plugins=(common-aliases git node npm nvm
+    tmux urltools vi-mode z zsh-navigation-tools zsh_reload)
 
 # User configuration
 
@@ -86,6 +86,12 @@ source $ZSH/oh-my-zsh.sh
 
 # autoload -Uz promptinit
 # promptinit
+
+unsetopt CORRECT_ALL
+
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
 
 export DOTFILES=~/dotfiles
 source $DOTFILES/zsh/main.zsh
