@@ -3,6 +3,7 @@
     email = ee.mihir.patel@gmail.com
 [alias]
     addi = add -i
+    addnw = !sh -c 'git diff -U0 -w --no-color "$@" | git apply --cached --ignore-whitespace --unidiff-zero -'
     assume-unchanged = !git update-index --assume-unchanged
     co = checkout
     df = diff -w --color-words
@@ -18,11 +19,6 @@
         git status; \
         echo; echo "------- $(pwd) -------"; echo; \
     }; f"
-    p = !git pull --rebase
-    pf = !git pull --ff-only
-    pwc = !git stash && git pull --rebase && git stash pop
-    sshow = "!f() { git stash show stash^{/$*} -p; }; f"
-    sapply = "!f() { git stash apply stash^{/$*}; }; f"
     undo-unchanged-assumption = !git update-index --no-assume-unchanged
     unchanged-assumptions = !git ls-files -v | grep "^[[:lower:]]"
 [color]
