@@ -60,7 +60,7 @@ plugins=(common-aliases git node npm nvm
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -93,6 +93,6 @@ setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 
-export DOTFILES=~/dotfiles
+export DOTFILES=/home/mihir/dotfiles
 source $DOTFILES/zsh/main.zsh
 

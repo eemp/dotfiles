@@ -33,7 +33,14 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 
+"let g:javascript_conceal_function             = "ƒ"
+"let g:javascript_conceal_null                 = "ø"
+"let g:javascript_conceal_undefined            = "¿"
+"let g:javascript_conceal_NaN                  = "ℕ"
+"let g:javascript_conceal_arrow_function       = "⇒"
+"set conceallevel=1
 Plugin 'pangloss/vim-javascript'
+
 Plugin 'mxw/vim-jsx'
 "Plugin 'Valloric/MatchTagAlways'
 
@@ -43,7 +50,6 @@ Plugin 'plasticboy/vim-markdown'
 
 let g:vrc_trigger = '<C-n>'
 let g:vrc_show_command = 1
-let g:vrc_connect_timeout = 5
 Plugin 'diepm/vim-rest-console'
 
 "let's keep vim simple
@@ -174,6 +180,7 @@ endif
 
 "let g:ctrlp_user_command = 'find %s -name "*.js" -o -name "*.pm" -o -name "*.pl" -o -name "*.config" -type f'
 let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat ~/.ctrlpignore`"'
+let g:ctrlp_root_markers = ['.ctrlp']
 
 """""""""""""""""""""""""""""""
 " > CUSTOM DIFF COLORSCHEME
@@ -220,6 +227,9 @@ command! -nargs=1 Bs :call BufSel("<args>")
 
 "No prompt for unsaved changes while switching buffers
 set hidden
+
+"Close buffers without changing layout
+map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 """""""""""""""""""""""""""""""""
 " > TERMINAL EMULATOR
@@ -287,3 +297,26 @@ let g:jsx_ext_required = 0
 autocmd BufWritePre * %s/\s\+$//e
 
 "set ttimeoutlen=10
+
+" improve experience with large files
+
+
+" file is large from 10mb
+let g:LargeFile = 1024 * 1024 * 10
+augroup LargeFile
+ autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+
+function LargeFile()
+ " no syntax highlighting etc
+ set eventignore+=FileType
+ " save memory when other file is viewed
+ setlocal bufhidden=unload
+ " is read-only (write with :w new_filename)
+ setlocal buftype=nowrite
+ " no undo possible
+ setlocal undolevels=-1
+ " display message
+ autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
+endfunction
+
