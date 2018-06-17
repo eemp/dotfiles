@@ -32,6 +32,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/grep.vim'
 
 "let g:javascript_conceal_function             = "ƒ"
 "let g:javascript_conceal_null                 = "ø"
