@@ -1,4 +1,12 @@
-source /etc/vimrc
+" Function to source only if file exists {
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+" }
+
+call SourceIfExists("/etc/vimrc")
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -27,11 +35,13 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-flagship'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/grep.vim'
 
 "let g:javascript_conceal_function             = "ƒ"
@@ -321,3 +331,22 @@ function LargeFile()
  autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 / 1024) . " MB, so some options are changed (see .vimrc for details)."
 endfunction
 
+" ycm & snippets
+let g:ycm_python_binary_path = 'python'
+let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:UltiSnipsEditSplit="vertical"
+
+" If you want :UltiSnipsEdit to split your window.
+" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+" (via http://stackoverflow.com/a/22253548/1626737)
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabCrMapping = 0
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/UltiSnips']
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger      = '<C-l>'
+let g:UltiSnipsJumpBackwardTrigger     = '<C-k>'
