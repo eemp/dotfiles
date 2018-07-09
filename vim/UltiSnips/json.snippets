@@ -1,0 +1,16 @@
+snippet sfm "contentFieldMapping" b
+"$1": {
+  "type": "string",
+  "analyzer": "$0",
+  "search_analyzer": "$0"
+}
+endsnippet
+
+snippet sfcm "contentFieldMapping" b
+"$1": {
+  "type": "string",
+  "analyzer": "content",
+  "search_analyzer": "content",
+  "copy_to": ["all_content"$0]
+}
+endsnippet

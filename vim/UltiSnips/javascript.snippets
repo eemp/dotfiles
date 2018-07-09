@@ -2,17 +2,36 @@ snippet me "module.exports" b
 module.exports = ${1:`!p snip.rv = ''.join(x.title() for x in re.sub('\.js$', '', snip.basename or 'ModuleName').split('_'))`};$0
 endsnippet
 
-snippet cc "createClass" b
-var ${1:`!p snip.rv = ''.join(x.title() for x in re.sub('\.js$', '', snip.basename or 'ModuleName').split('_'))`} = React.createClass({
-  /**
-   * @return {Object}
-   */
-  render: function() {
+snippet react "reactComponent" b
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+class ${1:`!p snip.rv = ''.join(x.title() for x in re.sub('\.js$', '', snip.basename or 'ModuleName').split('_'))`} extends React.Component {
+  render() {
     return (
-      $0
+      $2
     );
   }
 });
 
-module.exports = $1;
+$1.propTypes = {
+  $0
+}
+
+module.exports = connect()($1);
+endsnippet
+
+snippet re "require" b
+const `!p
+def formatVariableName(path):
+  knownNames = {
+    'axios': 'request',
+    'bluebird': 'Promise',
+    'jquery': '$',
+    'lodash': '_'
+  }
+  lastPart = path.split('/')[-1]
+  return knownNames.get(lastPart, re.sub(r'[_\-]', '', lastPart.lower()))
+snip.rv = formatVariableName(t[1])
+` = require('${1}');$0
 endsnippet
