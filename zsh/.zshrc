@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/mihir/.oh-my-zsh
+  export ZSH=/home/$USER/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,8 +49,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases git node npm nvm
-    tmux urltools vi-mode z zsh-navigation-tools zsh_reload)
+plugins=(common-aliases git node npm nvm tmux urltools vi-mode z zsh-navigation-tools zsh_reload)
 
 # User configuration
 
@@ -93,6 +92,6 @@ setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
 
-export DOTFILES=/home/mihir/dotfiles
+export DOTFILES=/home/$USER/dotfiles
 source $DOTFILES/zsh/main.zsh
 

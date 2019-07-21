@@ -1,3 +1,5 @@
+UBUNTU_INSTALLS="curl git neovim tmux zsh"
+
 all: git tmux vim zsh
 
 git: FORCE
@@ -29,5 +31,9 @@ vim-plugins: FORCE
 zsh: FORCE
 	rm -f ~/.zshrc
 	ln -s ${PWD}/zsh/.zshrc ~/
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+prep-ubuntu: FORCE
+	sudo apt-get install $(UBUNTU_INSTALLS)
 
 FORCE:
