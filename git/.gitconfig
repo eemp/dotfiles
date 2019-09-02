@@ -36,3 +36,5 @@
 [mergetool]
     prompt = false
 
+[credential]
+    helper = cache 86400
