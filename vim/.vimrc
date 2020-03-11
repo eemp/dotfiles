@@ -33,16 +33,17 @@ Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
 Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-flagship'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/grep.vim'
 
 "let g:javascript_conceal_function             = "ƒ"
@@ -75,6 +76,9 @@ au BufRead,BufNewFile *.ipy set filetype=python
 au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile *.rest set filetype=rest
 
+let g:vrc_curl_opts = {
+  \ '-k': '',
+\}
 
 """"""""""""""""""
 " > GENERAL
@@ -108,6 +112,14 @@ let mapleader=","
 "syntax enable
 set t_Co=256
 set background=dark
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+
 colorscheme PaperColor
 
 highlight LineNr ctermfg=grey
@@ -193,6 +205,7 @@ endif
 "let g:ctrlp_user_command = 'find %s -name "*.js" -o -name "*.pm" -o -name "*.pl" -o -name "*.config" -type f'
 let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat ~/.ctrlpignore`"'
 let g:ctrlp_root_markers = ['.ctrlp']
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 """""""""""""""""""""""""""""""
 " > CUSTOM DIFF COLORSCHEME
@@ -351,3 +364,7 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/vim/UltiSnips']
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger      = '<C-l>'
 let g:UltiSnipsJumpBackwardTrigger     = '<C-k>'
+
+nmap <leader>c<space> gcc
+vmap <leader>c<space> gc
+
