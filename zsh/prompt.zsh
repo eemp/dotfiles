@@ -13,3 +13,4 @@ precmd () {
     fi
 }
 
+RPROMPT="[%D{%y/%m/%f}|%*]"
