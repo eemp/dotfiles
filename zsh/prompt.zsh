@@ -7,9 +7,9 @@ PATH_FORMATTER=$DOTFILES/bin/prompt-helper.pl
 precmd () {
     # If outside of your home directory, print the current directory in red, blue otherwise.
     if [[ $PWD/ != $HOME/* ]]; then
-        PS1="%F{white}[%K{red}\$($PATH_FORMATTER)%k%F{green}\$(__git_ps1)%F{white}] %# "
+        PS1="%F{white}[%K{red}%m|\$($PATH_FORMATTER)%k%F{green}\$(__git_ps1)%F{white}] %# "
     else
-        PS1="%F{white}[\$($PATH_FORMATTER)%F{green}\$(__git_ps1)%F{white}] %# "
+        PS1="%F{white}[%F{red}%m%F{white}|\$($PATH_FORMATTER)%F{green}\$(__git_ps1)%F{white}] %# "
     fi
 }
 
