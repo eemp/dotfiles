@@ -33,6 +33,7 @@ Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'othree/xml.vim'
 "Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/syntastic'
@@ -368,3 +369,11 @@ let g:UltiSnipsJumpBackwardTrigger     = '<C-k>'
 nmap <leader>c<space> gcc
 vmap <leader>c<space> gc
 
+" code folding
+set foldmethod=indent
+set nofoldenable
+" Keep all folds open when a file is opened
+augroup OpenAllFoldsOnFileOpen
+    autocmd!
+    autocmd BufRead * normal zR
+augroup END
