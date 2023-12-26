@@ -26,10 +26,23 @@ prep_vim() {
 	ln -s ${PWD}/vim/.ctrlpignore ~/
 }
 
+install_zsh() {
+	if command -v apt >/dev/null; then
+		apt install zsh -y
+	elif command -v yum >/dev/null; then
+		yum install zsh -y
+	else
+		echo "No idea how to install zsh..."
+	fi
+}
+
 prep_zsh() {
+	if ! command -v zsh >/dev/null; then
+		install_zsh
+	fi
 	mv ~/.zshrc ~/.zshrc.bak 2>/dev/null
-	ln -s ${PWD}/zsh/.zshrc ~/
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	ln -s ${PWD}/zsh/.zshrc ~/
 }
 
 prep_git
