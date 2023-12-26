@@ -40,8 +40,8 @@ prep_zsh() {
 	if ! command -v zsh >/dev/null; then
 		install_zsh
 	fi
-	mv ~/.zshrc ~/.zshrc.bak 2>/dev/null
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	mv ~/.zshrc ~/.zshrc.bak 2>/dev/null
 	ln -s ${PWD}/zsh/.zshrc ~/
 }
 
