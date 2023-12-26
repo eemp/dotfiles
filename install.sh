@@ -26,12 +26,6 @@ prep_vim() {
     ln -s ~/dotfiles/vim/.ctrlpignore ~/
 }
 
-prep_vscode() {
-    mv ~/.vscode ~/.vscode.bak 2>/dev/null ||:
-    mkdir -p ~/.vscode
-    ln -s ~/dotfiles/vscode/settings.json ~/.vscode/settings.json
-}
-
 install_zsh() {
     if command -v apt >/dev/null; then
         apt install zsh -y
@@ -53,6 +47,5 @@ prep_zsh() {
 
 prep_git
 prep_vim
-prep_vscode
 prep_zsh
 prep_tmux
