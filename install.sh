@@ -6,49 +6,49 @@ prep_git() {
 }
 
 prep_tmux() {
-	mv ~/.tmux.conf ~/.tmux.conf.bak 2>/dev/null ||:
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	ln -s ~/dotfiles/tmux/.tmux.conf ~/
-	~/.tmux/plugins/tpm/bin/install_plugins
+    mv ~/.tmux.conf ~/.tmux.conf.bak 2>/dev/null ||:
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    ln -s ~/dotfiles/tmux/.tmux.conf ~/
+    ~/.tmux/plugins/tpm/bin/install_plugins
 }
 
 prep_vim_plugins() {
-	rm -rf ~/.vim/bundle
-	mkdir -p ~/.vim/autoload ~/.vim/bundle
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	vim +PluginInstall +qall
+    rm -rf ~/.vim/bundle
+    mkdir -p ~/.vim/autoload ~/.vim/bundle
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    vim +PluginInstall +qall
 }
 
 prep_vim() {
-	mv ~/.vimrc ~/.vimrc.bak 2>/dev/null ||:
-	mv ~/.ctrlpignore ~/.ctrlpignore.bak ||:
-	ln -s ~/dotfiles/vim/.vimrc ~/
-	ln -s ~/dotfiles/vim/.ctrlpignore ~/
+    mv ~/.vimrc ~/.vimrc.bak 2>/dev/null ||:
+    mv ~/.ctrlpignore ~/.ctrlpignore.bak ||:
+    ln -s ~/dotfiles/vim/.vimrc ~/
+    ln -s ~/dotfiles/vim/.ctrlpignore ~/
 }
 
 prep_vscode() {
-	mv ~/.vscode ~/.vscode.bak 2>/dev/null ||:
-	mkdir -p ~/.vscode
-	ln -s ~/dotfiles/vscode/settings.json ~/.vscode/settings.json
+    mv ~/.vscode ~/.vscode.bak 2>/dev/null ||:
+    mkdir -p ~/.vscode
+    ln -s ~/dotfiles/vscode/settings.json ~/.vscode/settings.json
 }
 
 install_zsh() {
-	if command -v apt >/dev/null; then
-		apt install zsh -y
-	elif command -v yum >/dev/null; then
-		yum install zsh -y
-	else
-		echo "No idea how to install zsh..."
-	fi
+    if command -v apt >/dev/null; then
+        apt install zsh -y
+    elif command -v yum >/dev/null; then
+        yum install zsh -y
+    else
+        echo "No idea how to install zsh..."
+    fi
 }
 
 prep_zsh() {
-	if ! command -v zsh >/dev/null; then
-		install_zsh
-	fi
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-	mv ~/.zshrc ~/.zshrc.bak 2>/dev/null
-	ln -s ${PWD}/zsh/.zshrc ~/
+    if ! command -v zsh >/dev/null; then
+        install_zsh
+    fi
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    mv ~/.zshrc ~/.zshrc.bak 2>/dev/null
+    ln -s ~/dotfiles/zsh/.zshrc ~/
 }
 
 prep_git
