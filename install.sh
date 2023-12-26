@@ -2,13 +2,13 @@
 
 prep_git() {
     mv ~/.gitconfig ~/.gitconfig.bak 2>/dev/null ||:
-    ln -s ${PWD}/git/.gitconfig ~/
+    ln -s ~/dotfiles/git/.gitconfig ~/
 }
 
 prep_tmux() {
 	mv ~/.tmux.conf ~/.tmux.conf.bak 2>/dev/null ||:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-	ln -s ${PWD}/tmux/.tmux.conf ~/
+	ln -s ~/dotfiles/tmux/.tmux.conf ~/
 	~/.tmux/plugins/tpm/bin/install_plugins
 }
 
@@ -22,8 +22,14 @@ prep_vim_plugins() {
 prep_vim() {
 	mv ~/.vimrc ~/.vimrc.bak 2>/dev/null ||:
 	mv ~/.ctrlpignore ~/.ctrlpignore.bak ||:
-	ln -s ${PWD}/vim/.vimrc ~/
-	ln -s ${PWD}/vim/.ctrlpignore ~/
+	ln -s ~/dotfiles/vim/.vimrc ~/
+	ln -s ~/dotfiles/vim/.ctrlpignore ~/
+}
+
+prep_vscode() {
+	mv ~/.vscode ~/.vscode.bak 2>/dev/null ||:
+	mkdir -p ~/.vscode
+	ln -s ~/dotfiles/vscode/settings.json ~/.vscode/settings.json
 }
 
 install_zsh() {
@@ -47,5 +53,6 @@ prep_zsh() {
 
 prep_git
 prep_vim
+prep_vscode
 prep_zsh
 prep_tmux
