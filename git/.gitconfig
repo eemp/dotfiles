@@ -37,7 +37,7 @@
     helper = cache 86400
 
 [include]
-  path = ~/.gitconfig.bak
+    path = ~/.gitconfig.bak
 
-# [includeIf "hasconfig:remote.*.url:https://github.com/**"]
-#  path = ~/.gitconfig.personal
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+    path = ~/.gitconfig.personal
