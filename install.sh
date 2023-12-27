@@ -3,6 +3,7 @@
 prep_git() {
     mv ~/.gitconfig ~/.gitconfig.bak 2>/dev/null ||:
     ln -s ~/dotfiles/git/.gitconfig ~/
+    ln -s ~/dotfiles/git/.gitconfig.personal ~/
 }
 
 prep_tmux() {
