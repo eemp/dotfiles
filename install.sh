@@ -46,7 +46,19 @@ prep_zsh() {
     ln -s ~/dotfiles/zsh/.zshrc ~/
 }
 
+prep_claude() {
+    # Symlink tracked claude files into user scope (~/.claude), backing up existing ones
+    mkdir -p ~/.claude
+    for f in settings.json CLAUDE.md; do
+        if [ -e ~/.claude/$f ] && [ ! -L ~/.claude/$f ]; then
+            mv ~/.claude/$f ~/.claude/$f.bak
+        fi
+        ln -sfn ~/dotfiles/claude/$f ~/.claude/$f
+    done
+}
+
 prep_git
+prep_claude
 prep_vim
 prep_zsh
 prep_tmux
