@@ -35,16 +35,14 @@
       "Bash(gh issue view:*)",
       "Bash(gh run view:*)",
       "Bash(gh run list:*)",
-      "Bash(npm run lint:*)",
-      "Bash(npm run test:*)",
-      "Bash(npm test:*)",
-      "WebSearch"
-    ],
-    "ask": [
       "Bash(git push:*)",
       "Bash(git reset --hard:*)",
       "Bash(git clean:*)",
-      "Bash(rm -rf:*)"
+      "Bash(npm run lint:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm test:*)",
+      "Bash(rm -rf:*)",
+      "WebSearch"
     ],
     "deny": [
       "Read(./.env)",
