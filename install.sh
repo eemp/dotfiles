@@ -32,6 +32,8 @@ install_zsh() {
         apt install zsh -y
     elif command -v yum >/dev/null; then
         yum install zsh -y
+    elif command -v brew >/dev/null; then
+        brew install zsh -y
     else
         echo "No idea how to install zsh..."
     fi
@@ -58,7 +60,9 @@ prep_claude() {
 }
 
 prep_git
-prep_claude
 prep_vim
+prep_vim_plugins
 prep_zsh
 prep_tmux
+prep_claude
+

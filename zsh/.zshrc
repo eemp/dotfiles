@@ -49,7 +49,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases git node npm nvm tmux urltools vi-mode z zsh-navigation-tools zsh_reload)
+plugins=(common-aliases git node npm nvm tmux vi-mode z zsh-navigation-tools)
 
 # User configuration
 
@@ -95,3 +95,4 @@ setopt HIST_FIND_NO_DUPS
 export DOTFILES=$HOME/dotfiles
 source $DOTFILES/zsh/main.zsh
 
+export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
